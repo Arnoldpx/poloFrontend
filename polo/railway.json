@@ -1,0 +1,7 @@
+{
+    "railway": {
+      "build": {
+        "output": "dist" 
+      }
+    }
+  }
