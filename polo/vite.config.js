@@ -1,29 +1,31 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
+import path from 'path'
 
-// https://vitejs.dev/config/
 export default defineConfig({
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src')
+    }
+  },
   plugins: [react()],
   css: {
     devSourcemap: false,
     preprocessorOptions: {
       scss: {
-        // Puedes incluir variables globales aquí
-        additionalData: `@import "/src/assets/scss/material-kit-pro.scss";`
-      },
-    },
+        additionalData: `@import "@/assets/scss/material-kit-pro.scss";`
+      }
+    }
   },
   optimizeDeps: {
-    include: ['jwt-decode']  // Asegúrate de incluir jwt-decode aquí
+    include: ['jwt-decode']
   },
   server: {
     watch: {
-      // Configuración para hacer que Vite detecte automáticamente cambios
-      usePolling: true, // Útil si estás usando un entorno como Docker o WSL
+      usePolling: true
     },
     hmr: {
-      // Reemplazo en caliente de módulos
-      overlay: true, // Muestra un overlay en el navegador para errores de HMR
+      overlay: true
     }
   }
 });
