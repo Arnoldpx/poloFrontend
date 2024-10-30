@@ -39,6 +39,7 @@ export default defineConfig({
     assetsDir: 'assets', // Carpeta dentro de dist para los recursos (CSS, JS, imágenes)
     manifest: true, // Genera un archivo manifest.json para la gestión de archivos en producción
     rollupOptions: {
+      input: path.resolve(__dirname, 'src/main.jsx'),
       // Agrupa los recursos en carpetas dentro de `assets`
       output: {
         entryFileNames: 'assets/[name].[hash].js',
