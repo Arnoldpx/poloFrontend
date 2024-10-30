@@ -33,14 +33,13 @@ export default defineConfig({
       overlay: true, // Muestra el overlay en caso de errores de HMR
     },
   },
-  base: './', // Base relativa para asegurar que las rutas de los recursos sean relativas en producción
+  base: './',  // Asegúrate de tener esto configurado para rutas relativas
   build: {
-    outDir: 'dist', // Carpeta de salida para la build
-    assetsDir: 'assets', // Carpeta dentro de dist para los recursos (CSS, JS, imágenes)
-    manifest: true, // Genera un archivo manifest.json para la gestión de archivos en producción
+    outDir: 'dist',
+    assetsDir: 'assets',
+    manifest: true,
     rollupOptions: {
-      input: path.resolve(__dirname, 'src/main.jsx'),
-      // Agrupa los recursos en carpetas dentro de `assets`
+      input: path.resolve(__dirname, 'index.html'),  // Apunta al archivo index.html en la raíz
       output: {
         entryFileNames: 'assets/[name].[hash].js',
         chunkFileNames: 'assets/[name].[hash].js',
