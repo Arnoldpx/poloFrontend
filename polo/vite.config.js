@@ -33,17 +33,16 @@ export default defineConfig({
       overlay: true, // Muestra el overlay en caso de errores de HMR
     },
   },
-  base: './',  // Asegúrate de tener esto configurado para rutas relativas
+  base: './', // para rutas relativas en producción
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-    manifest: true,
     rollupOptions: {
-      input: path.resolve(__dirname, 'index.html'),  // Apunta al archivo index.html en la raíz
+      input: path.resolve(__dirname, 'index.html'),
       output: {
-        entryFileNames: 'assets/[name].[hash].js',
-        chunkFileNames: 'assets/[name].[hash].js',
-        assetFileNames: 'assets/[name].[hash].[ext]',
+        entryFileNames: 'assets/main.js', // Nombre fijo sin hash
+        chunkFileNames: 'assets/[name].js', // Nombres sin hash
+        assetFileNames: 'assets/[name][extname]',
       },
     },
   },
