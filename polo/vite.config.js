@@ -33,8 +33,18 @@ export default defineConfig({
       overlay: true, // Muestra el overlay en caso de errores de HMR
     },
   },
-  // Sección añadida para la configuración de producción
+  base: './', // Base relativa para asegurar que las rutas de los recursos sean relativas en producción
   build: {
-    outDir: 'dist', // Asegúrate de que Vercel busque la salida en esta carpeta
+    outDir: 'dist', // Carpeta de salida para la build
+    assetsDir: 'assets', // Carpeta dentro de dist para los recursos (CSS, JS, imágenes)
+    manifest: true, // Genera un archivo manifest.json para la gestión de archivos en producción
+    rollupOptions: {
+      // Agrupa los recursos en carpetas dentro de `assets`
+      output: {
+        entryFileNames: 'assets/[name].[hash].js',
+        chunkFileNames: 'assets/[name].[hash].js',
+        assetFileNames: 'assets/[name].[hash].[ext]',
+      },
+    },
   },
 });
